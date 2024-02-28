@@ -73,5 +73,18 @@ def detaildosen():
         return jsonify(data)
         cursor.close()
 
+@app.route('/editdosen', methods=['PUT'])
+def editdosen():
+    if 'id' in request.args:
+        data = request.get_json()
+        cursor = mysql.connection.cursor()
+        sql = "UPDATE dosen SET nama=%s, univ=%s, jurusan=%s WHERE dosen_id = %s"
+        val = (data['nama'], data['univ'], data['jurusan'], request.args['id'],)
+        cursor.execute(sql, val)
+        
+        mysql.connection.commit()
+        return jsonify({'message' : 'Data has been updated!'})
+        cursor.close()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=50, debug=True)
