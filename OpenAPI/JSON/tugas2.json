@@ -1,0 +1,282 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Dokumentasi API Mahasiswa",
+        "description": "Dokumentasi untuk API Mahasiswa",
+        "version": "1.0",
+        "contact": {
+        "name": "AchmadZeaCShiraathD",
+        "email": "achmad.22040@mhs.unesa.ac.id",
+        "url": "https://github.com/Jea0hZea"
+        },
+        "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+        "url": "http://localhost/api1"
+        }
+    ],
+    "paths": {
+        "/getDataMahasiswa.php": {
+        "get": {
+            "summary": "Mendapatkan data mahasiswa",
+            "responses": {
+            "200": {
+                "description": "OK",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                        "type": "integer"
+                        },
+                        "records": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                            "nim": {
+                                "type": "string"
+                            },
+                            "nama_jurusan": {
+                                "type": "string"
+                            },
+                            "nama_mahasiswa": {
+                                "type": "string"
+                            },
+                            "alamat": {
+                                "type": "string"
+                            },
+                            "no_hp": {
+                                "type": "string"
+                            },
+                            "kelas": {
+                                "type": "string"
+                            },
+                            "id_jurusan": {
+                                "type": "string"
+                            }
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            },
+            "404": {
+                "description": "Data tidak ditemukan"
+            }
+            }
+        }
+        },
+        "/insertDataMahasiswa.php": {
+        "post": {
+            "summary": "Menyimpan data mahasiswa baru",
+            "requestBody": {
+            "required": true,
+            "content": {
+                "application/x-www-form-urlencoded": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "nim": {
+                        "type": "string"
+                    },
+                    "nama_mahasiswa": {
+                        "type": "string"
+                    },
+                    "alamat": {
+                        "type": "string"
+                    },
+                    "no_hp": {
+                        "type": "string"
+                    },
+                    "kelas": {
+                        "type": "string"
+                    },
+                    "id_jurusan": {
+                        "type": "string"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "responses": {
+            "200": {
+                "description": "OK",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                        "type": "integer"
+                        },
+                        "message": {
+                        "type": "string"
+                        }
+                    }
+                    }
+                }
+                }
+            },
+            "400": {
+                "description": "Data gagal disimpan"
+            }
+            }
+        }
+        },
+        
+        "/deleteDataMahasiswa.php": {
+        "delete": {
+            "summary": "Menghapus data mahasiswa berdasarkan NIM",
+            "parameters": [
+            {
+                "name": "key",
+                "in": "query",
+                "required": true,
+                "schema": {
+                "type": "string"
+                }
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "OK",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                        "type": "integer"
+                        },
+                        "message": {
+                        "type": "string"
+                        }
+                    }
+                    }
+                }
+                }
+            },
+            "404": {
+                "description": "Data tidak ditemukan"
+            }
+            }
+        }
+        },
+        "/updateDataMahasiswa.php": {
+        "put": {
+            "summary": "Memperbarui data mahasiswa",
+            "requestBody": {
+            "required": true,
+            "content": {
+                "application/x-www-form-urlencoded": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "nim": {
+                        "type": "string"
+                    },
+                    "nama_mahasiswa": {
+                        "type": "string"
+                    },
+                    "alamat": {
+                        "type": "string"
+                    },
+                    "no_hp": {
+                        "type": "string"
+                    },
+                    "kelas": {
+                        "type": "string"
+                    },
+                    "id_jurusan": {
+                        "type": "string"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "responses": {
+            "200": {
+                "description": "OK",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                        "type": "integer"
+                        },
+                        "message": {
+                        "type": "string"
+                        }
+                    }
+                    }
+                }
+                }
+            },
+            "400": {
+                "description": "Data gagal disimpan"
+            }
+            }
+        }
+        },
+        "/selectDetailJurusan.php": {
+        "get": {
+            "summary": "Mendapatkan detail jurusan berdasarkan ID",
+            "parameters": [
+            {
+                "name": "key",
+                "in": "query",
+                "required": true,
+                "schema": {
+                "type": "string"
+                }
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "OK",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                        "type": "integer"
+                        },
+                        "records": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                            "id_jurusan": {
+                                "type": "string"
+                            },
+                            "nama_jurusan": {
+                                "type": "string"
+                            }
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            },
+            "404": {
+                "description": "Data tidak ditemukan"
+            }
+            }
+        }
+        }
+    }
+    }
